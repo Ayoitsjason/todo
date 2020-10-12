@@ -18,10 +18,12 @@ from django.urls import path
 from hello.views import myView
 from toDoApp.views import todoView
 from toDoApp.views import addTodo
+from toDoApp.views import deleteTodo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', myView),
     path('toDo/', todoView),
-    path('addTodo/', addTodo)
+    path('addTodo/', addTodo),
+    path('deleteTodo/<int:todo_id>/', deleteTodo),
 ]

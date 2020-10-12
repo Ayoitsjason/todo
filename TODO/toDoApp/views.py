@@ -8,6 +8,7 @@ def todoView(request):
     return render(request, 'todo.html',
     {'all_items': all_todo_items})
 
+# CRUD - create, retrieve, update, delete
 def addTodo(request):
     new_item = TodoItem(content = request.POST['content'])
     new_item.save()
@@ -15,3 +16,12 @@ def addTodo(request):
     # create a new todo all_items
     # save
     # redirect the browser to "/todo/"
+
+def deleteTodo(request, todo_id):
+    item_to_delete = TodoItem.objects.get(id=todo_id)
+    item_to_delete.delete()
+    return HttpResponseRedirect('/toDo/')
+    # create a new variable which stores an object with a unique id
+    # delete the object
+    # redirect the browser to "/todo/"
+    

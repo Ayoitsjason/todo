@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <title>The HTML5 Herald</title>
-    <meta name="description" content="The HTML5 Herald" />
-    <meta name="author" content="SitePoint" />
+<head>
+  <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0" />
-  </head>
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="SitePoint" />
+</head>
 
-  <body>
-    <h1>This is my todo application</h1>
+<body>
+  <h1>This is my todo application</h1>
 
-    <ul>
-      {% for todo_item in all_items %}
-      <li>{{ todo_item.content }}</li>
-      {% endfor %}
-    </ul>
+  <ul>
+    {% for todo_item in all_items %}
+    <li>{{ todo_item.content }}<form action="/deleteTodo/{{todo_item.id}}/" style="display: inline-block" method="post">
+        {% csrf_token %}
+        <input type="submit" value="delete" />
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
 
-    <form action="/addTodo/" method="post">
-      {% csrf_token %}
-      <input type="text" name="content" />
-      <input type="submit" value="add" />
-    </form>
-  </body>
+  <form action="/addTodo/" method="post">
+    {% csrf_token %}
+    <input type="text" name="content" />
+    <input type="submit" value="add" />
+  </form>
+</body>
+
 </html>

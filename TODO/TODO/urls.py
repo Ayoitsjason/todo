@@ -19,6 +19,7 @@ from hello.views import myView
 from toDoApp.views import todoView
 from toDoApp.views import addTodo
 from toDoApp.views import deleteTodo
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +28,5 @@ urlpatterns = [
     path('addTodo/', addTodo),
     path('deleteTodo/<int:todo_id>/', deleteTodo),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
